@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA00P6Sk7RoPpNyje15mxJXIvXj7z3L1_A",
-  authDomain: "miniblog-25692.firebaseapp.com",
-  projectId: "miniblog-25692",
-  storageBucket: "miniblog-25692.firebasestorage.app",
-  messagingSenderId: "946071892624",
-  appId: "1:946071892624:web:85205e2400d6ce9da85e15",
+  apiKey: import.meta.env.apiKey,
+  authDomain: import.meta.env.authDomain,
+  projectId: import.meta.env.projectId,
+  storageBucket: import.meta.env.storageBucket,
+  messagingSenderId: import.meta.env.messagingSenderId,
+  appId: import.meta.env.appId,
 };
 
 const app = initializeApp(firebaseConfig);
