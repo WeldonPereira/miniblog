@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    background-color: #f6fcff;
+    font-family: "Montserrat", sans-serif;
+}
+
+input::placeholder, textarea::placeholder{
+    font-family: "Montserrat", sans-serif;
+}
+
+input:focus, textarea:focus{
+    outline: none;
+}
+
