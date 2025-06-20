@@ -32,7 +32,7 @@ form{
 label{
     display: flex;
     flex-direction: column;
-    margin-bottom: 1px;
+    margin-bottom: 1em;
 }
 
 label span{
@@ -59,6 +59,7 @@ button[disabled]{
     color: #721c24;
     background-color: #f8d7da;
     border: 1px solid #f5c6cb;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
+    margin-top: 1rem;
 }
