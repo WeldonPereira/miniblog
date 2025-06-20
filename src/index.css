@@ -9,9 +9,56 @@ body{
 
 input::placeholder, textarea::placeholder{
     font-family: "Montserrat", sans-serif;
+    color: #aaa;
 }
 
 input:focus, textarea:focus{
     outline: none;
 }
 
+input, textarea{
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: .8em 0;
+    background-color: transparent;
+}
+
+form{
+    max-width: 40%;
+    margin: 0 auto;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1px;
+}
+
+label span{
+    margin-bottom: .3em;
+    font-weight: bold;
+    text-align: left;
+}
+
+button{
+    background-color: #1a8918;
+    width: 120px;
+}
+
+button:hover{
+    background-color: #0f730c;
+    color: #fff;
+}
+
+button[disabled]{
+    background-color: #aaa;
+}
+
+.container .error{
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 5px;
+    border-radius: 5px;
+}

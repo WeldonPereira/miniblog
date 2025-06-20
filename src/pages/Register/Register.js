@@ -1,9 +1,11 @@
 const Register = () => {
   return (
-    <div>
-      <h1>Crie sua conta</h1>
-      <p>Cadastre-se para compartilhar sua história com a comunidade</p>
-      <form>
+    <div className="text-center">
+      <h1 className="text-2xl font-bold mt-6 mb-2">
+        Cadastre-se para compartilhar sua história com a comunidade
+      </h1>
+      <p className="text-lg mb-2">Crie sua conta</p>
+      <form autoComplete="off">
         <label>
           <span>Nome:</span>
           <input
@@ -40,7 +42,9 @@ const Register = () => {
             required
           />
         </label>
-        <button>Cadastrar</button>
+        <button className="text-white text-center cursor-pointer rounded-xl font-bold border-none py-2 mt-4 px-4 text-base">
+          Cadastrar
+        </button>
       </form>
     </div>
   );

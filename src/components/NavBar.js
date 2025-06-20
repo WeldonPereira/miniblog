@@ -24,7 +24,7 @@ const NavBar = () => {
               Home
             </NavLink>
           </li>
-          <li className="mx-4">
+          <li>
             <NavLink
               to="/about"
               className={({ isActive }) =>
