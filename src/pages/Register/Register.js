@@ -1,18 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuthentication } from "../../hooks/useAuthentication";
 
 const Register = () => {
-  const [name, setName] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const { createUser, error: authError, loading } = useAuthentication();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     const user = {
-      name,
+      displayName,
       email,
       password,
     };
@@ -22,8 +25,19 @@ const Register = () => {
       return;
     }
 
-    console.log(user);
+    const res = await createUser(user);
+
+    setDisplayName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
   };
+
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+    }
+  }, [authError]);
 
   return (
     <div className="text-center">
@@ -36,10 +50,10 @@ const Register = () => {
           <span>Nome:</span>
           <input
             type="text"
-            name="name"
+            name="displayName"
             placeholder="Digite seu nome"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
             required
           />
         </label>
@@ -76,9 +90,19 @@ const Register = () => {
             required
           />
         </label>
-        <button className="text-white text-center cursor-pointer rounded-xl font-bold border-none py-2 mt-2 px-4 text-base">
-          Cadastrar
-        </button>
+        {!loading && (
+          <button className="text-white text-center cursor-pointer rounded-xl font-bold border-none py-2 mt-2 px-4 text-base">
+            Cadastrar
+          </button>
+        )}
+        {loading && (
+          <button
+            className="text-white text-center cursor-pointer rounded-xl font-bold border-none py-2 mt-2 px-4 text-base"
+            disabled
+          >
+            Aguarde...
+          </button>
+        )}
         {error && <p className="error">{error}</p>}
       </form>
     </div>
