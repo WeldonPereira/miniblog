@@ -1,6 +1,11 @@
 import { NavLink } from "react-router-dom";
 
+import { useAuthentication } from "../hooks/useAuthentication";
+import { useAuthValue } from "../context/AuthContext";
+
 const NavBar = () => {
+  const { user } = useAuthValue();
+
   return (
     <div>
       <nav
@@ -24,6 +29,34 @@ const NavBar = () => {
               Home
             </NavLink>
           </li>
+          {user && (
+            <>
+              <li className="mx-4">
+                <NavLink
+                  to="/dashboard"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "py-2 px-3 bg-black text-white text-xl"
+                      : "py-2 px-3 text-xl"
+                  }
+                >
+                  Dashboard
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/posts/create"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "py-2 px-3 bg-black text-white text-xl"
+                      : "py-2 px-3 text-xl"
+                  }
+                >
+                  Criar Post
+                </NavLink>
+              </li>
+            </>
+          )}
           <li>
             <NavLink
               to="/about"
@@ -38,32 +71,34 @@ const NavBar = () => {
           </li>
         </ul>
 
-        <ul className="flex">
-          <li className="mx-4">
-            <NavLink
-              to="/register"
-              className={({ isActive }) =>
-                isActive
-                  ? "py-2 px-3 bg-black text-white text-xl"
-                  : "py-2 px-3 text-xl"
-              }
-            >
-              Cadastrar
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                isActive
-                  ? "py-2 px-3  bg-black text-white text-xl"
-                  : "py-2 px-3 text-xl"
-              }
-            >
-              Entrar
-            </NavLink>
-          </li>
-        </ul>
+        {!user && (
+          <ul className="flex">
+            <li className="mx-4">
+              <NavLink
+                to="/register"
+                className={({ isActive }) =>
+                  isActive
+                    ? "py-2 px-3 bg-black text-white text-xl"
+                    : "py-2 px-3 text-xl"
+                }
+              >
+                Cadastrar
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive
+                    ? "py-2 px-3  bg-black text-white text-xl"
+                    : "py-2 px-3 text-xl"
+                }
+              >
+                Entrar
+              </NavLink>
+            </li>
+          </ul>
+        )}
       </nav>
     </div>
   );
