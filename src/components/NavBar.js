@@ -5,6 +5,7 @@ import { useAuthValue } from "../context/AuthContext";
 
 const NavBar = () => {
   const { user } = useAuthValue();
+  const { logout } = useAuthentication();
 
   return (
     <div>
@@ -69,6 +70,18 @@ const NavBar = () => {
               Sobre
             </NavLink>
           </li>
+          {user && (
+            <>
+              <li>
+                <button
+                  onClick={logout}
+                  className="w-auto py-1 px-3 bg-transparent hover:bg-red-600 text-xl ml-4"
+                >
+                  Sair
+                </button>
+              </li>
+            </>
+          )}
         </ul>
 
         {!user && (
